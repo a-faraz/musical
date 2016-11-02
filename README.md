@@ -3,5 +3,5 @@ A lightweight boilerplate to get started building react applications
 
 Includes: 
 
-Babel
-Webpack
+- Babel
+- Webpack
