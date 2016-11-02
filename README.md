@@ -13,4 +13,4 @@ $ npm install
 $ npm start
 ```
 
-`Then open [localhost:5000](http://localhost:5000/) to view your app.`
+##### Then open [localhost:5000](http://localhost:5000/) to view your app.
