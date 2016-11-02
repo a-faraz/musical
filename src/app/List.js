@@ -7,3 +7,4 @@ export class List extends Component {
       <div>hello world</div>
     );
   }
+}
