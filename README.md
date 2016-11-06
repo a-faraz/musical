@@ -4,6 +4,7 @@ A lightweight boilerplate to get started building react applications.
 ### Includes:
 - Babel
 - Webpack
+- Webpack dev server
 
 ### Getting Started:
 ```
