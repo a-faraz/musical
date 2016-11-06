@@ -1,5 +1,5 @@
 import React from 'react';
 import { render } from 'react-dom';
-import { List } from './List';
+import { Demo } from './Demo';
 
-render(<List />, document.getElementById('app'));
+render(<Demo />, document.getElementById('app'));
