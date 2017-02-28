@@ -17,10 +17,18 @@ export class SearchBar extends Component {
   };
 
   handleUpdateInput(value) {
-    this.setState({
-      inputText: value
-    });
-    console.log('inputText: ', value);
+    let self = this;
+    if (value) {
+      SpotifyAPI.getArtist(urlStart + value + urlEnd)
+      .then(function(data){
+        let artists = data.artists.items;
+        let artistNames = [];
+        artists.forEach(function(val){
+          artistNames.push(val.name)
+        })
+        self.setState({ dataSource: artistNames });
+      })
+    }
   };
 
   render() {

@@ -1,7 +1,16 @@
+require('es6-promise').polyfill();
+require('isomorphic-fetch');
+
 module.exports = {
 
-  getArtist: function() {
-    console.log('getArtist ran')
+  getArtist: function(url) {
+    return fetch(url)
+      .then(function(response) {
+        if (response.status >= 400) {
+          throw new Error("Bad response from server");
+        }
+        return response.json();
+      });
   }
 
 };
