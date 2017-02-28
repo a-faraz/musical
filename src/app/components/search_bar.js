@@ -5,7 +5,7 @@ import SpotifyAPI from '../api/spotifyAPI';
 
 
 const urlStart = 'https://api.spotify.com/v1/search?q='
-const urlEnd = '&type=artist&limit=10'
+const urlEnd = '&type=artist&limit=5'
 
 export class SearchBar extends Component {
   constructor(props) {
@@ -16,8 +16,9 @@ export class SearchBar extends Component {
     }
   };
 
+  // this method is used to fetch a list of artists for the AutoComplete - based on user input
   handleUpdateInput(value) {
-    let self = this;
+    const self = this;
     if (value) {
       SpotifyAPI.getArtist(urlStart + value + urlEnd)
       .then(function(data){
@@ -31,13 +32,20 @@ export class SearchBar extends Component {
     }
   };
 
+  // this method is fired when a list item is selected or enter is pressed
+  onNewRequest(selectItem) {
+    const self = this;
+    console.log('selectItem: ', selectItem);
+  }
+
   render() {
     return (
       <div className="search-bar">
         <AutoComplete
+          floatingLabelText="Search Actor"
           dataSource={this.state.dataSource}
           onUpdateInput={this.handleUpdateInput.bind(this)}
-          floatingLabelText="Search Actor"
+          onNewRequest={this.onNewRequest.bind(this)}
           filter={AutoComplete.caseInsensitiveFilter}
         />
       </div>
