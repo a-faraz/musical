@@ -1,10 +1,14 @@
 # musical
-A lightweight boilerplate to get started building react applications.
+A react app which uses spotify's api to look up artists.
 
 ### Includes:
-- Babel
-- Webpack
-- Webpack dev server
+
+- react
+- react-router
+- material-ui
+- babel
+- webpack
+
 
 ### Getting Started:
 ```
