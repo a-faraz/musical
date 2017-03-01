@@ -1,21 +1,42 @@
-import React from 'react';
-import { render } from 'react-dom';
+import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
 
 import { SearchBar } from './components/search_bar';
+import { AlbumDetail } from './components/album_detail';
+import { AlbumList } from './components/album_list';
+
 import SpotifyAPI from './api/spotifyAPI';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+
+import { Router, Route, hashHistory } from 'react-router';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 injectTapEventPlugin();
 
+export class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      artists: []
+    }
+  };
 
-const App = () => (
-  <MuiThemeProvider>
-    <SearchBar />
-  </MuiThemeProvider>
 
-)
+  render() {
+      return (<MuiThemeProvider>
+                <SearchBar />
+              </MuiThemeProvider>
+      )
+  }
+};
 
-render(
-  <App />,
+// react-router routes!!
+
+ReactDOM.render(
+  <Router history={hashHistory}>
+    <Route path="/" component={App}/>
+    <Route path="/search" component={SearchBar}/>
+    <Route path="/albums" component={AlbumList}/>
+    <Route path="/album-detail" component={AlbumDetail}/>
+  </Router>,
   document.getElementById('app')
 );

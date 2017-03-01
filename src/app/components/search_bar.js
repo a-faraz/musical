@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import AutoComplete from 'material-ui/AutoComplete';
 import MenuItem from 'material-ui/MenuItem';
 import SpotifyAPI from '../api/spotifyAPI';
+import { Router, Route, hashHistory } from 'react-router';
+import { AlbumList } from './album_list';
 
 
 const urlStart = 'https://api.spotify.com/v1/search?q='
@@ -12,7 +14,7 @@ export class SearchBar extends Component {
     super(props);
     this.state = {
       dataSource: [],
-      inputText: ''
+      artistId: ''
     }
   };
 
@@ -21,14 +23,15 @@ export class SearchBar extends Component {
     const self = this;
     if (value) {
       SpotifyAPI.getArtist(urlStart + value + urlEnd)
-      .then(function(data){
-        let artists = data.artists.items;
+      .then((response) => {
+        let artists = response.artists.items;
         let artistNames = [];
-        artists.forEach(function(val){
-          artistNames.push(val.name)
-        })
+
+        artists.forEach(val => artistNames.push(val.name) );
         self.setState({ dataSource: artistNames });
+        self.setState({ artistId: artists[0].id });
       })
+      .catch((err) => { console.log('Error: ', err)})
     }
   };
 
@@ -36,6 +39,8 @@ export class SearchBar extends Component {
   onNewRequest(selectItem) {
     const self = this;
     console.log('selectItem: ', selectItem);
+    console.log('selectId: ', self.state.artistId);
+    hashHistory.push('/albums');
   }
 
   render() {
