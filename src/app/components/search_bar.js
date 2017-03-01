@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
+import { Router, Route, browserHistory } from 'react-router';
+
+import SpotifyAPI from '../api/spotifyAPI';
+import { AlbumList } from './album_list';
+
 import AutoComplete from 'material-ui/AutoComplete';
 import MenuItem from 'material-ui/MenuItem';
-import SpotifyAPI from '../api/spotifyAPI';
-import { Router, Route, browserHistory } from 'react-router';
-import { AlbumList } from './album_list';
+
 
 
 const urlStart = 'https://api.spotify.com/v1/search?q='
@@ -28,8 +31,8 @@ export class SearchBar extends Component {
         let artistNames = [];
 
         artists.forEach(val => artistNames.push(val.name) );
-        self.setState({ dataSource: artistNames });
-        self.setState({ artistId: artists[0].id });
+        self.setState({ dataSource: artistNames,
+                        artistId: artists[0].id });
       })
       .catch((err) => { console.log('Error: ', err)})
     }
@@ -38,8 +41,8 @@ export class SearchBar extends Component {
   // this method is fired when a list item is selected or enter is pressed
   onNewRequest(selectItem) {
     const self = this;
-    console.log('selectItem: ', selectItem);
-    console.log('selectId: ', self.state.artistId);
+    // console.log('selectItem: ', selectItem);
+    // console.log('selectId: ', self.state.artistId);
     localStorage.setItem("artistId", self.state.artistId);
     browserHistory.push('/albums');
   }

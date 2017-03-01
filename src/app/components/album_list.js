@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
-import MenuItem from 'material-ui/MenuItem';
+import { Router, Route, browserHistory } from 'react-router';
+
 import SpotifyAPI from '../api/spotifyAPI';
 import { TrackList } from './track_list';
 
+import MenuItem from 'material-ui/MenuItem';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import {GridList, GridTile} from 'material-ui/GridList';
@@ -21,10 +23,17 @@ export class AlbumList extends Component {
     }
   };
 
+  onSelect(e) {
+    console.log('e: ', e.currentTarget.getAttribute("id"));
+    let albumId = e.currentTarget.getAttribute("id");
+    localStorage.setItem("albumId", albumId);
+    browserHistory.push('/tracks');
+  }
+
   componentDidMount() {
     const artId = localStorage.getItem("artistId");
     SpotifyAPI.getAlbums(urlStart + artId + urlEnd)
-    .then((response) => {
+    .then(response => {
       console.log(response.items);
       let mapped = response.items.map(function(item){
         const newObj = {};
@@ -36,7 +45,7 @@ export class AlbumList extends Component {
       });
       this.setState({ albums: mapped })
     })
-    .catch((err) => { console.log("Error: ", err) });
+    .catch(err => { console.log("Error: ", err) });
 
   }
 
@@ -51,6 +60,7 @@ export class AlbumList extends Component {
       gridList: {
         width: 800,
         height: 800,
+        margin: 10,
         overflowY: 'auto',
       },
     };
@@ -66,8 +76,10 @@ export class AlbumList extends Component {
             {this.state.albums.map((item) => (
               <GridTile
                 key={item.id}
+                id={item.id}
                 title={item.name}
                 subtitle={<span>by <b>{item.artist}</b></span>}
+                onClick={this.onSelect}
               >
                 <img src={item.img} />
               </GridTile>
