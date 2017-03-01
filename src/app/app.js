@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 
 import { SearchBar } from './components/search_bar';
-import { AlbumDetail } from './components/album_detail';
+import { TrackList } from './components/track_list';
 import { AlbumList } from './components/album_list';
 
 import SpotifyAPI from './api/spotifyAPI';
@@ -36,7 +36,7 @@ ReactDOM.render(
     <Route path="/" component={App}/>
     <Route path="/search" component={SearchBar}/>
     <Route path="/albums" component={AlbumList}/>
-    <Route path="/album-detail" component={AlbumDetail}/>
+    <Route path="/tracks" component={TrackList}/>
   </Router>,
   document.getElementById('app')
 );

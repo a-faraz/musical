@@ -6,7 +6,7 @@ const urlStart = 'https://api.spotify.com/v1/albums/'
 const albumId = '/v1/albums/ {id} /tracks'
 const urlEnd = '/tracks'
 
-export class AlbumDetail extends Component {
+export class TrackList extends Component {
   constructor(props) {
     super(props);
     this.state = { }
@@ -16,8 +16,8 @@ export class AlbumDetail extends Component {
 
   render() {
     return (
-      <div className="album-detail">
-        Album Detail
+      <div className="track-list">
+        Track List
       </div>
     );
   }

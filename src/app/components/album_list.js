@@ -1,43 +1,80 @@
 import React, { Component } from 'react';
 import MenuItem from 'material-ui/MenuItem';
 import SpotifyAPI from '../api/spotifyAPI';
+import { TrackList } from './track_list';
+
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import {GridList, GridTile} from 'material-ui/GridList';
+import IconButton from 'material-ui/IconButton';
+import Subheader from 'material-ui/Subheader';
+import StarBorder from 'material-ui/svg-icons/toggle/star-border';
 
 const urlStart = 'https://api.spotify.com/v1/artists/'
 const artistId = '/v1/artists/ {id} /albums'
 const urlEnd = '/albums'
 
-let albums = [];
-
 export class AlbumList extends Component {
   constructor(props) {
     super(props);
-    this.state = { }
+    this.state = {
+      albums: []
+    }
   };
 
   componentDidMount() {
     SpotifyAPI.getAlbums(urlStart + "2mxe0TnaNL039ysAj51xPQ" + urlEnd)
     .then((response) => {
       console.log(response.items);
-      albums = response.items.map(function(item){
+      let mapped = response.items.map(function(item){
         const newObj = {};
         newObj.name = item.name;
-        newObj.cover = item.images[0].url;
+        newObj.img = item.images[0].url;
         newObj.artist = item.artists[0].name;
         newObj.id = item.id;
         return newObj;
       });
-      console.log('albumss: ', albums);
+      this.setState({ albums: mapped })
     })
     .catch((err) => { console.log("Error: ", err) });
 
   }
 
-
   render() {
+
+    const styles = {
+      root: {
+        display: 'flex',
+        flexWrap: 'wrap',
+        justifyContent: 'space-around',
+      },
+      gridList: {
+        width: 800,
+        height: 800,
+        overflowY: 'auto',
+      },
+    };
+
     return (
-      <div className="album-list">
-        Album List
-      </div>
-    );
+      <MuiThemeProvider muiTheme={getMuiTheme()}>
+        <div style={styles.root}>
+          <GridList
+            cellHeight={360}
+            style={styles.gridList}
+          >
+            <Subheader>Discography</Subheader>
+            {this.state.albums.map((item) => (
+              <GridTile
+                key={item.id}
+                title={item.name}
+                subtitle={<span>by <b>{item.artist}</b></span>}
+              >
+                <img src={item.img} />
+              </GridTile>
+            ))}
+          </GridList>
+        </div>
+        	</MuiThemeProvider>
+      );
   }
 }
