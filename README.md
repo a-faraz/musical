@@ -1,4 +1,4 @@
-# musical
+# spotified
 A react app which uses spotify's api to look up artists.
 
 ### Includes:
