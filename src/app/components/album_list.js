@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { Router, Route, browserHistory } from 'react-router';
-
+// other components and APIs
 import SpotifyAPI from '../api/spotifyAPI';
 import { TrackList } from './track_list';
-
+// Material UI dependencies
 import MenuItem from 'material-ui/MenuItem';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';

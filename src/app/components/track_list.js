@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
+// other components and APIs
 import SpotifyAPI from '../api/spotifyAPI';
-
+// Material UI dependencies
 import MenuItem from 'material-ui/MenuItem';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
@@ -16,7 +17,7 @@ export class TrackList extends Component {
     super(props);
     this.state = {
       tracks: [],
-      trackImg: ""
+      trackImg: ''
     }
   };
 
