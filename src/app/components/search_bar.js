@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import AutoComplete from 'material-ui/AutoComplete';
 import MenuItem from 'material-ui/MenuItem';
 import SpotifyAPI from '../api/spotifyAPI';
-import { Router, Route, hashHistory } from 'react-router';
+import { Router, Route, browserHistory } from 'react-router';
 import { AlbumList } from './album_list';
 
 
@@ -40,12 +40,15 @@ export class SearchBar extends Component {
     const self = this;
     console.log('selectItem: ', selectItem);
     console.log('selectId: ', self.state.artistId);
-    hashHistory.push('/albums');
+    localStorage.setItem("artistId", self.state.artistId);
+    browserHistory.push('/albums');
   }
 
   render() {
     return (
       <div className="search-bar">
+        <h2>Welcome to Musical</h2>
+        <h4>The Number One Spotify App!</h4>
         <AutoComplete
           floatingLabelText="Search Actor"
           dataSource={this.state.dataSource}

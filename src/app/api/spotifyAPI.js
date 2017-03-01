@@ -23,7 +23,7 @@ module.exports = {
       });
   },
 
-  getAlbumInfo: function(url) {
+  getTracks: function(url) {
     return fetch(url)
       .then(function(response) {
         if (response.status >= 400) {

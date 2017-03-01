@@ -10,9 +10,8 @@ import IconButton from 'material-ui/IconButton';
 import Subheader from 'material-ui/Subheader';
 import StarBorder from 'material-ui/svg-icons/toggle/star-border';
 
-const urlStart = 'https://api.spotify.com/v1/artists/'
-const artistId = '/v1/artists/ {id} /albums'
-const urlEnd = '/albums'
+const urlStart = 'https://api.spotify.com/v1/artists/';
+const urlEnd = '/albums';
 
 export class AlbumList extends Component {
   constructor(props) {
@@ -23,7 +22,8 @@ export class AlbumList extends Component {
   };
 
   componentDidMount() {
-    SpotifyAPI.getAlbums(urlStart + "2mxe0TnaNL039ysAj51xPQ" + urlEnd)
+    const artId = localStorage.getItem("artistId");
+    SpotifyAPI.getAlbums(urlStart + artId + urlEnd)
     .then((response) => {
       console.log(response.items);
       let mapped = response.items.map(function(item){
@@ -74,7 +74,7 @@ export class AlbumList extends Component {
             ))}
           </GridList>
         </div>
-        	</MuiThemeProvider>
-      );
+      </MuiThemeProvider>
+    );
   }
 }
