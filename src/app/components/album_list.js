@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Router, Route, browserHistory } from 'react-router';
+import { browserHistory } from 'react-router';
 // other components and APIs
 import SpotifyAPI from '../api/spotifyAPI';
 import { TrackList } from './track_list';
@@ -8,9 +8,7 @@ import MenuItem from 'material-ui/MenuItem';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import {GridList, GridTile} from 'material-ui/GridList';
-import IconButton from 'material-ui/IconButton';
 import Subheader from 'material-ui/Subheader';
-import StarBorder from 'material-ui/svg-icons/toggle/star-border';
 
 const urlStart = 'https://api.spotify.com/v1/artists/';
 const urlEnd = '/albums';
@@ -22,19 +20,21 @@ export class AlbumList extends Component {
       albums: []
     }
   };
-
+// method when item is selected
   onSelect(e) {
     console.log('e: ', e.currentTarget.getAttribute("id"));
     let albumId = e.currentTarget.getAttribute("id");
+    // store album Id so other component can fetch it
     localStorage.setItem("albumId", albumId);
     browserHistory.push('/tracks');
   }
-
+// allows the API call to happen as soon as inital rendering occurs
   componentDidMount() {
+    //get artist Id from localStorage to use in url
     const artId = localStorage.getItem("artistId");
     SpotifyAPI.getAlbums(urlStart + artId + urlEnd)
     .then(response => {
-      console.log(response.items);
+      // console.log(response.items);
       let mapped = response.items.map(function(item){
         const newObj = {};
         newObj.name = item.name;
@@ -50,7 +50,7 @@ export class AlbumList extends Component {
   }
 
   render() {
-
+// styles for material ui
     const styles = {
       root: {
         display: 'flex',
@@ -62,7 +62,7 @@ export class AlbumList extends Component {
         height: 800,
         margin: 10,
         overflowY: 'auto',
-      },
+      }
     };
 
     return (
@@ -74,15 +74,15 @@ export class AlbumList extends Component {
           >
             <Subheader>Discography</Subheader>
             {this.state.albums.map((item) => (
-              <GridTile
-                key={item.id}
-                id={item.id}
-                title={item.name}
-                subtitle={<span>by <b>{item.artist}</b></span>}
-                onClick={this.onSelect}
-              >
-                <img src={item.img} />
-              </GridTile>
+                <GridTile
+                  key={item.id}
+                  id={item.id}
+                  title={item.name}
+                  subtitle={<span>by <b>{item.artist}</b></span>}
+                  onClick={this.onSelect}
+                >
+                  <img src={item.img} />
+                </GridTile>
             ))}
           </GridList>
         </div>

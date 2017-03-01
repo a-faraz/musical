@@ -12,15 +12,14 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 injectTapEventPlugin();
 
-export class App = () => {
+// stateless component
+const App = () => {
 
-  render() {
       return (
         <MuiThemeProvider>
             <SearchBar />
         </MuiThemeProvider>
       )
-  }
 
 };
 

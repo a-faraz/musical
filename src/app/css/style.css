@@ -1,0 +1,11 @@
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+.song-length {
+  color: white;
+}
+
+.page-title, .sub-title {
+  color: #00BCD4;
+}
