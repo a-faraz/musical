@@ -47,7 +47,7 @@ export class SearchBar extends Component {
   render() {
     return (
       <div className='search-bar'>
-        <h2 className='page-title'>Spotified</h2>
+        <h2 className='page-title'>SPOTIFIED</h2>
         <h4 className='sub-title'>The Number One Spotify App!</h4>
         <AutoComplete
           floatingLabelText='Search Artist'

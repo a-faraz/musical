@@ -14,7 +14,7 @@ A react app which uses spotify's api to look up artists.
 ### Getting Started:
 ```
 $ git clone https://github.com/a-faraz/spotified
-$ cd musical
+$ cd spotified
 $ npm install
 $ npm start
 ```
