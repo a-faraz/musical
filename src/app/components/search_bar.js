@@ -57,7 +57,7 @@ export class SearchBar extends Component {
           filter={AutoComplete.caseInsensitiveFilter}
         />
         <br/>
-        <img src='./app/img/music-icon.png' className='main-photo'/>
+        <img src='../src/app/img/music-icon.png' className='main-photo'/>
       </div>
     );
   }
