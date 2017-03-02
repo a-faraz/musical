@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack-dev-server --port 5000 --content-base src --watch"
+    "dev": "webpack-dev-server --port 5000 --content-base src --watch",
+    "postinstall": "webpack -p",
+    "start": "node server.js"
   },
   "author": "AnjumFaraz10@gmail.com",
   "license": "ISC",
