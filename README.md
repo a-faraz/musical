@@ -1,4 +1,4 @@
-# musical
+# spotified
 A react app which uses spotify's api to look up artists.
 
 ### Includes:
@@ -12,7 +12,7 @@ A react app which uses spotify's api to look up artists.
 
 ### Getting Started:
 ```
-$ git clone https://github.com/a-faraz/musical
+$ git clone https://github.com/a-faraz/spotified
 $ cd musical
 $ npm install
 $ npm start
