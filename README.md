@@ -1,6 +1,8 @@
 # spotified
 A react app which uses spotify's api to look up artists.
 
+Check it out here: https://spotified.herokuapp.com/ 
+
 ### Includes:
 
 - react
