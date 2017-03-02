@@ -40,22 +40,24 @@ export class SearchBar extends Component {
   // this method is fired when a list item is selected or enter is pressed
   onNewRequest(selectItem) {
     const self = this;
-    localStorage.setItem("artistId", self.state.artistId);
+    localStorage.setItem('artistId', self.state.artistId);
     browserHistory.push('/albums');
   }
 
   render() {
     return (
-      <div className="search-bar">
-        <h2 className="page-title">Musical</h2>
-        <h4 className="sub-title">The Number One Spotify App!</h4>
+      <div className='search-bar'>
+        <h2 className='page-title'>Spotified</h2>
+        <h4 className='sub-title'>The Number One Spotify App!</h4>
         <AutoComplete
-          floatingLabelText="Search Artist"
+          floatingLabelText='Search Artist'
           dataSource={this.state.dataSource}
           onUpdateInput={this.handleUpdateInput.bind(this)}
           onNewRequest={this.onNewRequest.bind(this)}
           filter={AutoComplete.caseInsensitiveFilter}
         />
+        <br/>
+        <img src='./app/img/music-icon.png' className='main-photo'/>
       </div>
     );
   }

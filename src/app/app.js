@@ -10,7 +10,7 @@ import SpotifyAPI from './api/spotifyAPI';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import injectTapEventPlugin from 'react-tap-event-plugin';
-require('./css/style.css');
+require('./css/style.scss');
 injectTapEventPlugin();
 // stateless component
 const App = () => {
@@ -27,9 +27,9 @@ const App = () => {
 
 ReactDOM.render(
   <Router history={browserHistory}>
-    <Route path="/" component={App} />
-    <Route path="/albums" component={AlbumList}/>
-    <Route path="/tracks" component={TrackList}/>
+    <Route path='/' component={App} />
+    <Route path='/albums' component={AlbumList}/>
+    <Route path='/tracks' component={TrackList}/>
   </Router>,
   document.getElementById('app')
 );

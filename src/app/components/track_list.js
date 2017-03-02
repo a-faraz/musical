@@ -86,7 +86,7 @@ export class TrackList extends Component {
                 id={item.id}
                 title={item.title}
                 subtitle={<span>by <b>{item.artist}</b></span>}
-                actionIcon={<span className="song-length" style={{margin: "15px"}}>{item.duration}</span>}
+                actionIcon={<span className='song-length'>{item.duration}</span>}
               >
                 <img src={this.state.trackData.img} />
               </GridTile>

@@ -1,3 +1,5 @@
+$mainColor: #00BCD4;
+
 body {
   font-family: 'Roboto', sans-serif;
 }
@@ -8,12 +10,17 @@ body {
 
 .song-length {
   color: white;
+  margin: 15px;
 }
 
 .page-title {
-  color: #00BCD4;
+  color: $mainColor;
 }
 
 .sub-title {
-  color: #00BCD4;
+  color: $mainColor;
+}
+
+.main-photo {
+  margin: 25px;
 }
