@@ -55,7 +55,6 @@ export class SearchBar extends Component {
           onUpdateInput={this.handleUpdateInput.bind(this)}
           onNewRequest={this.onNewRequest.bind(this)}
           filter={AutoComplete.caseInsensitiveFilter}
-          fullWidth={true}
         />
       </div>
     );

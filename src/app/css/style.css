@@ -2,10 +2,18 @@ body {
   font-family: 'Roboto', sans-serif;
 }
 
+.search-bar {
+  text-align: center;
+}
+
 .song-length {
   color: white;
 }
 
-.page-title, .sub-title {
+.page-title {
+  color: #00BCD4;
+}
+
+.sub-title {
   color: #00BCD4;
 }

@@ -6,15 +6,20 @@ module.exports = {
   },
   debug: true,
   module: {
-        loaders: [
-            {
-                test: /\.jsx?$/,
-                exclude: /node_modules/,
-                loader: 'babel-loader',
-                query: {
-                    presets: [['es2015', 'react']]
-                }
-            }
-        ]
-    }
-}
+    loaders: [
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: 'babel-loader',
+        query: {
+          presets: ['es2015']
+        }
+      },
+      {
+        test: /\.css$/,
+        loader: 'style-loader!css-loader'
+      }
+    ]
+  }
+
+};
