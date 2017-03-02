@@ -10,8 +10,10 @@ import SpotifyAPI from './api/spotifyAPI';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import injectTapEventPlugin from 'react-tap-event-plugin';
-require('./css/style.scss');
 injectTapEventPlugin();
+// sass file
+require('./css/style.scss');
+
 // stateless component
 const App = () => {
 

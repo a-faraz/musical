@@ -22,16 +22,15 @@ export class AlbumList extends Component {
   };
 // method when item is selected
   onSelect(e) {
-    console.log('e: ', e.currentTarget.getAttribute("id"));
-    let albumId = e.currentTarget.getAttribute("id");
+    let albumId = e.currentTarget.getAttribute('id');
     // store album Id so other component can fetch it
-    localStorage.setItem("albumId", albumId);
+    localStorage.setItem('albumId', albumId);
     browserHistory.push('/tracks');
   }
 // allows the API call to happen as soon as inital rendering occurs
   componentDidMount() {
     //get artist Id from localStorage to use in url
-    const artId = localStorage.getItem("artistId");
+    const artId = localStorage.getItem('artistId');
     SpotifyAPI.getAlbums(urlStart + artId + urlEnd)
     .then(response => {
       // console.log(response.items);
@@ -45,7 +44,7 @@ export class AlbumList extends Component {
       });
       this.setState({ albums: mapped })
     })
-    .catch(err => { console.log("Error: ", err) });
+    .catch(err => { console.log('Error: ', err) });
 
   }
 

@@ -6,6 +6,7 @@ A react app which uses spotify's api to look up artists.
 - react
 - react-router
 - material-ui
+- sass
 - babel
 - webpack
 

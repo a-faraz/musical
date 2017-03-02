@@ -27,7 +27,6 @@ export class TrackList extends Component {
     const albumId = localStorage.getItem('albumId');
     SpotifyAPI.getTracks(urlStart + albumId)
       .then(response => {
-        console.log('eetre', response)
         let mapped = response.tracks.items.map(song => {
           let newObj = {};
           newObj.title = song.name;
