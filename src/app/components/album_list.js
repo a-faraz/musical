@@ -73,7 +73,7 @@ export class AlbumList extends Component {
           >
             <Subheader>Discography</Subheader>
             {this.state.albums.map((item) => (
-                <GridTile
+                <GridTile className='album-tile'
                   key={item.id}
                   id={item.id}
                   title={item.name}
